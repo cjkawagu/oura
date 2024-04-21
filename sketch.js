@@ -1,19 +1,47 @@
 let zoomLevel = 1.0;
 // stores days and each days sleep stage cycles (time)
-let hypnogramData;
+var sleepTable;
+let hypnogramData = [];
 // stores calories burnt throughout the day
-let caloriesData;
+var activityTable;
+let caloriesData = [];
 
 // @Ehna finish up this function to load the data in
 function preload(){
-    hypnogramData = loadTable();
-    caloriesData = loadTable();
+    // loaded in files 
+    sleepTable = loadTable("sleep.csv", "csv", "header");
+    activityTable = loadTable("activity.csv", "csv", "header");
 }
 
 function setup() {
     var canvas = createCanvas(windowWidth, 405);
     canvas.parent("graph");
     frameRate(60);
+
+    // parsing data for calories
+    // push [date, cals] to caloriesData array
+    for(var i = 0; i < activityTable.getRowCount(); i++){
+        var row = table.getRow(i);
+        var date = row.getString(0);
+        var cals = row.getNum(9);
+        caloriesData.push([date, cals]);
+        // console.log(caloriesData);
+    }
+
+    // parsing data for sleep periods
+    // push [date, duration, awake, light, rem, deep, total] to hypnogramData array
+    for(var i = 0; i < sleepTable.getRowCount(); i++){
+        var row = table.getRow(i);
+        var date = row.getString(0);
+        var duration = row.getNum(9);
+        var awake = row.getNum(10);
+        var light = row.getNum(11);
+        var rem = row.getNum(12);
+        var deep = row.getNum(13);
+        var total = row.getNum(14);
+        hypnogramData.push([date, duration, awake, light, rem, deep, total]);
+        // console.log(hypnogramData);
+    }
 }
 
 // main draw function
