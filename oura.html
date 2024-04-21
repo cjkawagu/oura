@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="oura.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+
+            <div class="nav-section">
+                
+                <br>
+
+                <div class="sidebar-item">
+                    <div class="icon-circle"></div>
+                    <span class="text">Patient <br> Overview</span>
+                </div>
+                <div class="sidebar-item selected">
+                    <div class="icon-circle"></div>
+                    <span class="text">Dashboard</span>
+                </div>
+
+            </div>
+            <div class="nav-footer">
+                <div class="sidebar-item">
+                    <div class="icon-circle"></div>
+                    <span class="text">Settings</span>
+                </div>
+                
+                <br>
+
+                <hr>
+
+                <br>
+                <br>
+
+                <div class="sidebar-item">
+                    <div class="icon-circle"></div>
+                    <span class="text">Provider<br>Name</span>   
+                </div>
+
+                <br>
+
+            </div>
+        </nav>
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Weight & Dose</h1>
+            </header>
+
+            <div class="graph">
+
+                <div class="tab-container">
+                    <button class="tab" onclick="highlightTab(this)">Daily</button>
+                    <button class="tab" onclick="highlightTab(this)">Weekly</button>
+                    <button class="tab" onclick="highlightTab(this)">Monthly</button>
+                    <button class="tab" onclick="highlightTab(this)">Yearly</button>
+                </div>
+    
+                <section class="content-area">
+                    <div class="graph-placeholder">Graph will go here</div>
+                </section>
+
+            </div>
+
+            <footer class="content-footer">
+                AI Generated Graph Analysis
+                <br>
+                <br>
+                <div class="AIText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="oura.js"></script>
+</body>
+</html>
