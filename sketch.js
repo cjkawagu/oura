@@ -23,3 +23,5 @@ function zoomOut(){
     //Zoom out by 10%
     zoomLevel *= 0.9;
 }
+
+
