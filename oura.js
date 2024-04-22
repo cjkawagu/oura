@@ -1,8 +1,15 @@
 function toggleTheme() {
     document.body.classList.toggle('dark-mode'); // Toggle between dark and light mode
-
     const isDarkMode = document.body.classList.contains('dark-mode'); // Check if dark mode is active
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Store the preference in localStorage
+}
+
+function highlightTab(tab) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach((tab) => {
+        tab.classList.remove('selected');
+    });
+    tab.classList.add('selected');
 }
 
 function showPage(page) {
@@ -56,13 +63,18 @@ function showPage(page) {
 
     const contentDiv = document.createElement('div');
     contentDiv.innerHTML = contentHTML;
-    mainContent.appendChild(contentDiv); // Add the new content
-    
+    mainContent.appendChild(contentDiv);
+
+    const weeklyTab = contentDiv.querySelector('.tab:nth-child(2)');
+    if (weeklyTab) {
+        highlightTab(weeklyTab);
+    }
+
     document.querySelectorAll('.sidebar-item').forEach((item) => {
         item.classList.remove('selected'); // Unselect all sidebar items
     });
     document.querySelector(`[data-page-link="${page}"]`).classList.add('selected'); // Highlight the selected item
-    
+
     localStorage.setItem('lastPage', page); // Persist the selected page
 }
 

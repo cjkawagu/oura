@@ -9,7 +9,8 @@
     --graph-container-color: #F5F5F5;
     --content-footer-color: #EEEEEE;
     --icon-circle-color: black;
-    --selected-color: #FFFFFF; /* Added selected color for light mode */
+    --selected-color: #FFFFFF; 
+    --selected-tab-color: #D9D9D9;
 }
 
 /* Dark mode */
@@ -23,7 +24,8 @@
     --graph-container-color: #131312;
     --content-footer-color: #272725;
     --icon-circle-color: grey;
-    --selected-color: #555; /* Added selected color for dark mode */
+    --selected-color: #555; 
+    --selected-tab-color: #131312;
 }
 
 /* Apply dark mode by default */
@@ -60,6 +62,10 @@ hr {
     font-weight: 200;
 }
 
+#switch {
+    border: var(--text-color) solid 1pt;
+}
+
 .nav-section, .nav-footer {
     display: flex;
     flex-direction: column;
@@ -80,8 +86,8 @@ hr {
     background-color: var(--selected-color);
 }
 
-.tab.selected {
-    background-color: var(--content-area-color);
+.tab.selected { 
+    background-color: var(--selected-tab-color);
 }
 
 .icon-circle {
