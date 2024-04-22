@@ -3,11 +3,6 @@ function toggleTheme() {
 
     const isDarkMode = document.body.classList.contains('dark-mode'); // Check if dark mode is active
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Store the preference in localStorage
-
-    const toggleButton = document.getElementById('theme-toggle');
-    if (toggleButton) {
-        toggleButton.innerText = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'; // Update the toggle text
-    }
 }
 
 function showPage(page) {
@@ -88,4 +83,3 @@ window.addEventListener('load', () => {
         showPage('weight-dose'); // Default to 'Weight & Dose'
     }
 });
-
