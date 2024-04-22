@@ -4,9 +4,9 @@
     --text-color: black;
     --sidebar-color: #D9D9D9;
     --main-content-color: #FFFFFF;
-    --content-area-color: #F5F5F5;
+    --content-area-color: #D9D9D9;
     --tab-color: #FFFFFF;
-    --graph-container-color: #F5F5F5;
+    --graph-container-color: #D9D9D9;
     --content-footer-color: #EEEEEE;
     --icon-circle-color: black;
     --selected-color: #FFFFFF; 
@@ -196,4 +196,39 @@ hr {
     padding: 2%;
     border-radius: 500px;
     border: none;
+}
+
+.sidebar-item .icon-circle {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.sidebar-item .text {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sidebar-item input {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#providerName {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 200;
+}
+
+#providerName::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
 }

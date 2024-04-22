@@ -57,7 +57,13 @@ function showPage(page) {
         contentTitle = 'Patient Overview';
         contentHTML = `
             <h1>&nbsp; ${contentTitle}</h1>
-            <div></div>
+            <div class="graph-container">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
         `;
     }
 
@@ -78,7 +84,19 @@ function showPage(page) {
     localStorage.setItem('lastPage', page); // Persist the selected page
 }
 
-// Restore sidebar selection and theme mode on page load
+function saveProviderName() {
+    const providerName = document.getElementById('providerName').value;
+    localStorage.setItem('providerName', providerName);
+}
+
+function loadProviderName() {
+    const providerName = localStorage.getItem('providerName');
+    if (providerName) {
+        document.getElementById('providerName').value = providerName;
+    }
+}
+
+// Restore sidebar selection, theme mode, and provider name on page load
 window.addEventListener('load', () => {
     const lastPage = localStorage.getItem('lastPage');
     const savedTheme = localStorage.getItem('theme');
@@ -94,4 +112,6 @@ window.addEventListener('load', () => {
     } else {
         showPage('weight-dose'); // Default to 'Weight & Dose'
     }
+
+    loadProviderName(); // Load the saved provider name
 });
