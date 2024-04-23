@@ -11,14 +11,8 @@ function preload(){
     // loaded in files 
     sleepTable = loadTable("sleep.csv", "csv", "header");
     activityTable = loadTable("activity.csv", "csv", "header");
-}
 
-function setup() {
-    var canvas = createCanvas(windowWidth, 405);
-    canvas.parent("graph");
-    frameRate(60);
-
-    // parsing data for calories
+        // parsing data for calories
     // push [date, cals] to caloriesData array
     for(var i = 0; i < activityTable.getRowCount(); i++){
         var row = table.getRow(i);
@@ -42,6 +36,12 @@ function setup() {
         hypnogramData.push([date, duration, awake, light, rem, deep, total]);
         // console.log(hypnogramData);
     }
+}
+
+function setup() {
+    var canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent("graph");
+    frameRate(60);
 }
 
 // main draw function
