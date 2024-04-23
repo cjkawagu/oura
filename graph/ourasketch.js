@@ -318,12 +318,12 @@ function draw() {
   noStroke();
   fill(255);
   textAlign(CENTER, TOP);
-  text("REM Sleep", width / 2, height - marginY + 30);
+  text("Deep Sleep", width / 2, height - marginY + 30);
   textAlign(RIGHT, CENTER);
   push();
   translate(marginX - 70, height / 2);
   rotate(-PI / 2);
-  text("Deep Sleep", 0, 0);
+  text("REM Sleep", 0, 0);
   pop();
 
   // Draw
