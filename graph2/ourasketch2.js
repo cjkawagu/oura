@@ -1,23 +1,15 @@
 // ***** Global variables ***** //
 var sleepData;
-var maxDeep = 0;
-var minDeep = Infinity;
-var deepRange;
+var maxY = 0;
+var minY = Infinity;
 var maxRem = 0;
 var minRem = Infinity;
-var remRange;
-var maxDuration = 0;
-var minDuration = 0;
-var durationRange;
+var timeRange;
 var marginX = 100;
 var marginY = 80;
 var graphHeight;
 var graphWidth;
-var sleepObjects = [];
-var selectedToggle = 0;
-var toggleLength = 100;
-var toggleSpacing = 10;
-var toggleOptions = ["Deep Sleep", "REM", "Sleep Duration"];
+var sleepStrings = [];
 var connectPoints = false;
 let selectedFile;
 
@@ -51,18 +43,24 @@ document.getElementById("upload-button").addEventListener("click", (e) => {
       graphHeight = height - marginY * 2;
       graphWidth = width - marginX * 2;
 
-      // Sort the data based on REM sleep
-      result.sort((a, b) => parseFloat(b.score_rem) - parseFloat(a.score_rem));
-
       for (var i = 0; i < result.length; i++) {
-        var deep = parseFloat(result[i].score_deep);
-        var rem = parseFloat(result[i].score_rem);
-        var duration = parseFloat(result[i].total);
-        sleepObjects.push(new sleep(deep, rem, duration));
+        sleepStrings.push(parseString(result[i].hypnogram_5min));
       }
     });
   };
 });
+
+function 
+
+
+
+
+
+
+
+
+
+
 
 function sleep(deep, rem, duration) {
   // Properties
@@ -75,14 +73,6 @@ function sleep(deep, rem, duration) {
 
   // Functions
   this.drawEllipse = function () {
-    noStroke();
-    if (selectedToggle == 0) {
-      fill(255, 0, 0);
-    } else if (selectedToggle == 1) {
-      fill(0, 255, 0);
-    } else if (selectedToggle == 2) {
-      fill(0, 0, 255);
-    }
     ellipse(this.positionX, this.positionY, this.ellipseSize, this.ellipseSize);
   };
 
@@ -112,7 +102,7 @@ function sleep(deep, rem, duration) {
       textAlign(LEFT, TOP);
       text("Deep Sleep: " + str(this.deep), boxX + 10, boxY + 10);
       text("REM Sleep: " + str(this.rem), boxX + 10, boxY + 30);
-      text("Sleep Duration: " + str((this.duration / 60 / 60).toFixed(2)) + " hours", boxX + 10, boxY + 50);
+      text("Sleep Duration: " + str(this.duration) + " min", boxX + 10, boxY + 50);
     }
   };
 }
@@ -137,6 +127,13 @@ function getMaxValues(data) {
   durationRange = maxDuration - minDuration;
 }
 
+
+
+
+
+
+
+
 // setup is automatically called once when the page loads.
 function setup() {
   // createCanvas() creates the canvas element we will be drawing to.
@@ -147,36 +144,9 @@ function setup() {
   console.log("Setup complete...");
 }
 
-function drawToggles() {
-  for (var i = 0; i < toggleOptions.length; i++) {
-    if (selectedToggle == i) {
-      fill(255, 233, 127);
-    } else {
-      fill(230);
-    }
-    noStroke();
-    rect(
-      marginX -
-        toggleLength -
-        toggleSpacing -
-        (toggleLength + toggleSpacing) * i,
-      marginY - 30,
-      toggleLength,
-      20
-    );
-    fill(100);
-    textAlign(CENTER, CENTER);
-    text(
-      toggleOptions[i],
-      marginX - toggleLength / 2 - (toggleLength + toggleSpacing) * i,
-      marginY - 20
-    );
-  }
-}
 
 function draw() {
   background(255);
-  drawToggles();
   // Draw minor axis lines
   stroke(230);
   for (var i = 0; i < 9; i++) {
@@ -205,12 +175,12 @@ function draw() {
   noStroke();
   fill(0);
   textAlign(CENTER, TOP);
-  text("REM Sleep", width / 2, height - marginY + 30);
+  text("Time", width / 2, height - marginY + 30);
   textAlign(RIGHT, CENTER);
   push();
   translate(marginX - 70, height / 2);
   rotate(-PI / 2);
-  text("Deep Sleep", 0, 0);
+  text("Sleep Stage", 0, 0);
   pop();
 
   // Draw
@@ -252,32 +222,7 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  for (var i = 0; i < toggleOptions.length; i++) {
-    var toggleX =
-      marginX -
-      toggleLength -
-      toggleSpacing -
-      (toggleLength + toggleSpacing) * i;
-    var toggleY = marginY - 30;
-    var toggleWidth = toggleLength;
-    var toggleHeight = 20;
-
-    if (
-      mouseX > toggleX &&
-      mouseX < toggleX + toggleWidth &&
-      mouseY > toggleY &&
-      mouseY < toggleY + toggleHeight
-    ) {
-      selectedToggle = i;
-      if (selectedToggle == 2) {
-        connectPoints = !connectPoints;
-      }
-    }
-  }
-}
-
-
+// Thanks Mia
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   graphHeight = height - marginY * 2;
