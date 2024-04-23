@@ -1,16 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 /* Light mode */
 :root {
-  --background-color: #d9d9d9;
+  --background-color: #bababa;
   --text-color: black;
-  --sidebar-color: #d9d9d9;
+  --sidebar-color: #bababa;
   --main-content-color: #ffffff;
-  --content-area-color: #d9d9d9;
+  --content-area-color: #bababa;
   --tab-color: #ffffff;
-  --graph-container-color: #d9d9d9;
+  --graph-container-color: #bababa;
   --content-footer-color: #eeeeee;
   --icon-circle-color: grey;
   --selected-color: #ffffff;
-  --selected-tab-color: #d9d9d9;
+  --selected-tab-color: #bababa;
 }
 
 /* Dark mode */
@@ -39,7 +41,10 @@ html {
 }
 
 h1 {
-  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 hr {
@@ -103,10 +108,19 @@ hr {
 
 .text {
   font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .title {
   font-size: 22px;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  animation: fade 3s infinite;
 }
 
 .email {
@@ -142,6 +156,10 @@ hr {
   padding-right: 1%;
   width: fit-content;
   border-radius: 500px;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .graph-container {
@@ -390,5 +408,15 @@ h3 {
 
   .detail-item textarea {
     flex-basis: calc(100% - 160px);
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
   }
 }

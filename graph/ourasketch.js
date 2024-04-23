@@ -165,7 +165,7 @@ function sleep(deep, rem, duration) {
   // Functions
   this.drawEllipse = function () {
     noStroke();
-
+    selectedToggle = 1;
     // Change fill based on hover state
     if (this.isHovered) {
       fill(200, 60);
