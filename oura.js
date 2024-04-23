@@ -141,10 +141,6 @@ function toggleTheme() {
               <button id="saveButton" onclick="savePatientInfo()">Save</button>
             </div>
           </div>
-          </div>
-          
-  
-          
         </div>
       `;
     }
