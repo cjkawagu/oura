@@ -59,90 +59,86 @@ function showPage(page) {
         <h1>&nbsp; ${contentTitle}</h1>
         
         <div class="graph-container patient-overview">
-                <div class="patient-info">
-                <div class="info-group">
-                <div class="info-item">
-                    <label for="patientName">Patient Name:</label>
-                    <input type="text" id="patientName" placeholder="Enter patient name">
-                </div>
-                <div class="info-item">
-                    <label for="patientID">Patient ID:</label>
-                    <input type="text" id="patientID" placeholder="Enter patient ID">
-                </div>
-                </div>
-                <div class="info-group">
-                <div class="info-item">
-                    <label for="dateOfBirth">Date of Birth:</label>
-                    <input type="date" id="dateOfBirth">
-                </div>
-                <div class="info-item">
-                    <label for="gender">Gender:</label>
-                    <input type="text" id="gender" placeholder="Enter gender">
-                </div>
-                </div>
-                <div class="info-group">
-                <div class="info-item">
-                    <label for="allergies">Allergies:</label>
-                    <input type="text" id="allergies" placeholder="Enter allergies">
-                </div>
-                <div class="info-item">
-                    <label for="currentMedication">Current Medication:</label>
-                    <input type="text" id="currentMedication" placeholder="Enter medication">
-                </div>
-                </div>
+          <div class="patient-info">
+            <div class="info-group">
+              <div class="info-item">
+                <label for="patientName">Patient Name:</label>
+                <input type="text" id="patientName" placeholder="Enter patient name" oninput="savePatientInfo()">
+              </div>
+              <div class="info-item">
+                <label for="patientID">Patient ID:</label>
+                <input type="text" id="patientID" placeholder="Enter patient ID" oninput="savePatientInfo()">
+              </div>
             </div>
-            
-            <div class="patient-details">
-                <div class="details-left">
-                <h3>Provider Notes</h3>
-                <textarea id="providerNotes" placeholder="Enter provider notes"></textarea>
-                </div>
-            
-                <div class="details-right">
-                <br> <br> <br>
-            
-                <div class="detail-item">
-                    <h3>Vitals</h3>
-                    <textarea id="vitals" placeholder="Enter vitals"></textarea>
-                </div>
-            
-                <div class="detail-item">
-                    <h3>Prescriptions</h3>
-                    <textarea id="prescriptions" placeholder="Enter prescriptions"></textarea>
-                </div>
-            
-                <div class="detail-item">
-                    <h3>Lab Results</h3>
-                    <textarea id="labResults" placeholder="Enter lab results"></textarea>
-                </div>
-            
-                <div class="detail-item">
-                    <h3>Medical Images</h3>
-                    <textarea id="medicalImages" placeholder="Enter medical images"></textarea>
-                </div>
-            
-                <div class="detail-item">
-                    <h3>Medical History</h3>
-                    <textarea id="medicalHistory" placeholder="Enter medical history"></textarea>
-                </div>
-            
-                <div class="detail-item">
-                    <h3>Documents</h3>
-                    <textarea id="documents" placeholder="Enter documents"></textarea>
-                </div>
-                </div>
+            <div class="info-group">
+              <div class="info-item">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" oninput="savePatientInfo()">
+              </div>
+              <div class="info-item">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" placeholder="Enter gender" oninput="savePatientInfo()">
+              </div>
             </div>
-
-            <div class="save-button-container">
+            <div class="info-group">
+              <div class="info-item">
+                <label for="allergies">Allergies:</label>
+                <input type="text" id="allergies" placeholder="Enter allergies" oninput="savePatientInfo()">
+              </div>
+              <div class="info-item">
+                <label for="currentMedication">Current Medication:</label>
+                <input type="text" id="currentMedication" placeholder="Enter medication" oninput="savePatientInfo()">
+              </div>
+            </div>
+          </div>
+  
+          <div class="patient-details">
+            <div class="details-left">
+              <h3>Provider Notes</h3>
+              <textarea id="providerNotes" placeholder="Enter provider notes" oninput="savePatientInfo()"></textarea>
+            </div>
+  
+            <div class="details-right">
+              <br> <br> <br>
+  
+              <div class="detail-item">
+                <h3>Vitals</h3>
+                <textarea id="vitals" placeholder="Enter vitals" oninput="savePatientInfo()"></textarea>
+              </div>
+  
+              <div class="detail-item">
+                <h3>Prescriptions</h3>
+                <textarea id="prescriptions" placeholder="Enter prescriptions" oninput="savePatientInfo()"></textarea>
+              </div>
+  
+              <div class="detail-item">
+                <h3>Lab Results</h3>
+                <textarea id="labResults" placeholder="Enter lab results" oninput="savePatientInfo()"></textarea>
+              </div>
+  
+              <div class="detail-item">
+                <h3>Medical Images</h3>
+                <textarea id="medicalImages" placeholder="Enter medical images" oninput="savePatientInfo()"></textarea>
+              </div>
+  
+              <div class="detail-item">
+                <h3>Medical History</h3>
+                <textarea id="medicalHistory" placeholder="Enter medical history" oninput="savePatientInfo()"></textarea>
+              </div>
+  
+              <div class="detail-item">
+                <h3>Documents</h3>
+                <textarea id="documents" placeholder="Enter documents" oninput="savePatientInfo()"></textarea>
+              </div>
+            </div>
+          </div>
+  
+          <div class="save-button-container">
             <div class="save-button-wrapper">
               <button id="saveButton" onclick="savePatientInfo()">Save</button>
             </div>
           </div>
-         </div>
-
         </div>
-  
-        
       `;
   }
 
