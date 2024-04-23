@@ -1,49 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5"></script>
-</head>
-<body>
-    <input type="file" id="fileInput" accept=".csv">
+    <style>
+      body {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" id="fileInput" accept=".csv" />
     <select id="dataSelection">
-        <option value="calories">Calories</option>
-        <option value="inactiveHours">Inactive Hours</option>
-        <option value="activeHours">Active Hours</option>
+      <option value="calories">Calories</option>
+      <option value="inactiveHours">Inactive Hours</option>
+      <option value="activeHours">Active Hours</option>
     </select>
     <div id="statusDisplay">Select a data type...</div>
     <canvas id="myChart"></canvas>
     <script src="chart-setup.js"></script>
-</body>
+  </body>
 </html>
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload and Chart Data</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5"></script>
-</head>
-<body>
-    <input type="file" id="fileInput" accept=".csv">
-
-    <
-    <canvas id="myChart"></canvas>
-    <script src="chart-setup.js"></script>
-
-
-    <select id="dataSelection">
-        <option value="calories">Calories</option>
-        <option value="inactiveHours">Inactive Hours</option>
-        <option value="activeHours">Active Hours</option>
-    </select>
-    <div id="statusDisplay">Select a data type...</div>
-</body>
-</html> -->

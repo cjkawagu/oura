@@ -1,27 +1,27 @@
 function toggleTheme() {
-    document.body.classList.toggle('dark-mode'); // Toggle between dark and light mode
-    const isDarkMode = document.body.classList.contains('dark-mode'); // Check if dark mode is active
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Store the preference in localStorage
+  document.body.classList.toggle("dark-mode"); // Toggle between dark and light mode
+  const isDarkMode = document.body.classList.contains("dark-mode"); // Check if dark mode is active
+  localStorage.setItem("theme", isDarkMode ? "dark" : "light"); // Store the preference in localStorage
 }
 
 function highlightTab(tab) {
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach((tab) => {
-        tab.classList.remove('selected');
-    });
-    tab.classList.add('selected');
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach((tab) => {
+    tab.classList.remove("selected");
+  });
+  tab.classList.add("selected");
 }
 
 function showPage(page) {
-    const mainContent = document.querySelector('.main-content');
-    mainContent.innerHTML = ''; // Clear previous content
-  
-    let contentTitle = '';
-    let contentHTML = '';
-  
-    if (page === 'weight-dose') {
-        contentTitle = 'Weight & Dose';
-        contentHTML = `
+  const mainContent = document.querySelector(".main-content");
+  mainContent.innerHTML = ""; // Clear previous content
+
+  let contentTitle = "";
+  let contentHTML = "";
+
+  if (page === "weight-dose") {
+    contentTitle = "Weight & Dose";
+    contentHTML = `
           <h1>&nbsp; ${contentTitle}</h1>
           <div class="graph-container">
             <br>
@@ -36,9 +36,9 @@ function showPage(page) {
             </div>
           </div>
         `; // OKAY BASICALLY JUST CHANGE THE URL OF THE GRAPH AND IT SHOULD BE ABLE TO POPULATE IT! THIS ONE IS OURAGRAPH1
-    } else if (page === 'sleep-calories') {
-        contentTitle = 'Sleep & Calories';
-        contentHTML = `
+  } else if (page === "sleep-calories") {
+    contentTitle = "Weight & Activity";
+    contentHTML = `
             <h1>&nbsp; ${contentTitle}</h1>
             <div class="graph-container">
                 <br>
@@ -49,13 +49,13 @@ function showPage(page) {
                     <button class="tab" onclick="highlightTab(this)">Yearly</button>
                 </div>
                 <div class="content-area" id="graph">
-                    <iframe src="graph/ouragraph.html" class="ouraGraph2"></iframe>
+                    <iframe src="graph2/graph2.html" class="ouraGraph2"></iframe>
                 </div>
             </div>
         `; // OKAY BASICALLY JUST CHANGE THE URL OF THE GRAPH AND IT SHOULD BE ABLE TO POPULATE IT! THIS ONE IS OURAGRAPH2
-    } else if (page === 'patient-overview') {
-        contentTitle = 'Patient Overview';
-        contentHTML = `
+  } else if (page === "patient-overview") {
+    contentTitle = "Patient Overview";
+    contentHTML = `
         <h1>&nbsp; ${contentTitle}</h1>
         
         <div class="graph-container patient-overview">
@@ -134,110 +134,114 @@ function showPage(page) {
             </div>
             </div>
       `;
-    }
+  }
 
-    const contentDiv = document.createElement('div');
-    contentDiv.innerHTML = contentHTML;
-    mainContent.appendChild(contentDiv);
+  const contentDiv = document.createElement("div");
+  contentDiv.innerHTML = contentHTML;
+  mainContent.appendChild(contentDiv);
 
-    const weeklyTab = contentDiv.querySelector('.tab:nth-child(2)');
-    if (weeklyTab) {
-        highlightTab(weeklyTab);
-    }
+  const weeklyTab = contentDiv.querySelector(".tab:nth-child(2)");
+  if (weeklyTab) {
+    highlightTab(weeklyTab);
+  }
 
-    document.querySelectorAll('.sidebar-item').forEach((item) => {
-        item.classList.remove('selected'); // Unselect all sidebar items
-    });
-    document.querySelector(`[data-page-link="${page}"]`).classList.add('selected'); // Highlight ta selected item
+  document.querySelectorAll(".sidebar-item").forEach((item) => {
+    item.classList.remove("selected"); // Unselect all sidebar items
+  });
+  document
+    .querySelector(`[data-page-link="${page}"]`)
+    .classList.add("selected"); // Highlight ta selected item
 
-    localStorage.setItem('lastPage', page); // Persist the selected page
+  localStorage.setItem("lastPage", page); // Persist the selected page
 }
 
 function saveProviderName() {
-    const providerName = document.getElementById('providerName').value;
-    localStorage.setItem('providerName', providerName);
+  const providerName = document.getElementById("providerName").value;
+  localStorage.setItem("providerName", providerName);
 }
 
 function loadProviderName() {
-    const providerName = localStorage.getItem('providerName');
-    if (providerName) {
-        document.getElementById('providerName').value = providerName;
-    }
+  const providerName = localStorage.getItem("providerName");
+  if (providerName) {
+    document.getElementById("providerName").value = providerName;
+  }
 }
 
 function savePatientInfo() {
-    const patientName = document.getElementById('patientName').value;
-    const patientID = document.getElementById('patientID').value;
-    const dateOfBirth = document.getElementById('dateOfBirth').value;
-    const gender = document.getElementById('gender').value;
-    const weight = document.getElementById('weight').value;
-    const allergies = document.getElementById('allergies').value;
-    const currentMedication = document.getElementById('currentMedication').value;
-    const providerNotes = document.getElementById('providerNotes').value;
-    const vitals = document.getElementById('vitals').value;
-    const prescriptions = document.getElementById('prescriptions').value;
-    const labResults = document.getElementById('labResults').value;
-    const medicalImages = document.getElementById('medicalImages').value;
-    const medicalHistory = document.getElementById('medicalHistory').value;
-    const documents = document.getElementById('documents').value;
-  
-    const patientInfo = {
-      patientName,
-      patientID,
-      dateOfBirth,
-      gender,
-      weight,
-      allergies,
-      currentMedication,
-      providerNotes,
-      vitals,
-      prescriptions,
-      labResults,
-      medicalImages,
-      medicalHistory,
-      documents
-    };
-  
-    localStorage.setItem('patientInfo', JSON.stringify(patientInfo));
+  const patientName = document.getElementById("patientName").value;
+  const patientID = document.getElementById("patientID").value;
+  const dateOfBirth = document.getElementById("dateOfBirth").value;
+  const gender = document.getElementById("gender").value;
+  const weight = document.getElementById("weight").value;
+  const allergies = document.getElementById("allergies").value;
+  const currentMedication = document.getElementById("currentMedication").value;
+  const providerNotes = document.getElementById("providerNotes").value;
+  const vitals = document.getElementById("vitals").value;
+  const prescriptions = document.getElementById("prescriptions").value;
+  const labResults = document.getElementById("labResults").value;
+  const medicalImages = document.getElementById("medicalImages").value;
+  const medicalHistory = document.getElementById("medicalHistory").value;
+  const documents = document.getElementById("documents").value;
+
+  const patientInfo = {
+    patientName,
+    patientID,
+    dateOfBirth,
+    gender,
+    weight,
+    allergies,
+    currentMedication,
+    providerNotes,
+    vitals,
+    prescriptions,
+    labResults,
+    medicalImages,
+    medicalHistory,
+    documents,
+  };
+
+  localStorage.setItem("patientInfo", JSON.stringify(patientInfo));
 }
-  
+
 function loadPatientInfo() {
-    const patientInfo = JSON.parse(localStorage.getItem('patientInfo'));
-    if (patientInfo) {
-      document.getElementById('patientName').value = patientInfo.patientName;
-      document.getElementById('patientID').value = patientInfo.patientID;
-      document.getElementById('dateOfBirth').value = patientInfo.dateOfBirth;
-      document.getElementById('gender').value = patientInfo.gender;
-      document.getElementById('weight').value = patientInfo.weight;
-      document.getElementById('allergies').value = patientInfo.allergies;
-      document.getElementById('currentMedication').value = patientInfo.currentMedication;
-      document.getElementById('providerNotes').value = patientInfo.providerNotes;
-      document.getElementById('vitals').value = patientInfo.vitals;
-      document.getElementById('prescriptions').value = patientInfo.prescriptions;
-      document.getElementById('labResults').value = patientInfo.labResults;
-      document.getElementById('medicalImages').value = patientInfo.medicalImages;
-      document.getElementById('medicalHistory').value = patientInfo.medicalHistory;
-      document.getElementById('documents').value = patientInfo.documents;
-    }
+  const patientInfo = JSON.parse(localStorage.getItem("patientInfo"));
+  if (patientInfo) {
+    document.getElementById("patientName").value = patientInfo.patientName;
+    document.getElementById("patientID").value = patientInfo.patientID;
+    document.getElementById("dateOfBirth").value = patientInfo.dateOfBirth;
+    document.getElementById("gender").value = patientInfo.gender;
+    document.getElementById("weight").value = patientInfo.weight;
+    document.getElementById("allergies").value = patientInfo.allergies;
+    document.getElementById("currentMedication").value =
+      patientInfo.currentMedication;
+    document.getElementById("providerNotes").value = patientInfo.providerNotes;
+    document.getElementById("vitals").value = patientInfo.vitals;
+    document.getElementById("prescriptions").value = patientInfo.prescriptions;
+    document.getElementById("labResults").value = patientInfo.labResults;
+    document.getElementById("medicalImages").value = patientInfo.medicalImages;
+    document.getElementById("medicalHistory").value =
+      patientInfo.medicalHistory;
+    document.getElementById("documents").value = patientInfo.documents;
+  }
 }
-  
+
 // Restore sidebar selection, theme mode, and provider name on page load
-window.addEventListener('load', () => {
-    const lastPage = localStorage.getItem('lastPage');
-    const savedTheme = localStorage.getItem('theme');
+window.addEventListener("load", () => {
+  const lastPage = localStorage.getItem("lastPage");
+  const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === 'light') {
-        document.body.classList.remove('dark-mode'); // Remove dark mode for light mode
-    } else {
-        document.body.classList.add('dark-mode'); // Default to dark mode
-    }
+  if (savedTheme === "light") {
+    document.body.classList.remove("dark-mode"); // Remove dark mode for light mode
+  } else {
+    document.body.classList.add("dark-mode"); // Default to dark mode
+  }
 
-    if (lastPage) {
-        showPage(lastPage); // Restore the selected page
-    } else {
-        showPage('weight-dose'); // Default to 'Weight & Dose'
-    }
+  if (lastPage) {
+    showPage(lastPage); // Restore the selected page
+  } else {
+    showPage("weight-dose"); // Default to 'Weight & Dose'
+  }
 
-    loadProviderName(); // Load the saved provider name
-    loadPatientInfo(); // Load the saved patient information
+  loadProviderName(); // Load the saved provider name
+  loadPatientInfo(); // Load the saved patient information
 });
