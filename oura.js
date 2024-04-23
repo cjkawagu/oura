@@ -168,80 +168,75 @@ function loadProviderName() {
 }
 
 function savePatientInfo() {
-  const patientName = document.getElementById("patientName").value;
-  const patientID = document.getElementById("patientID").value;
-  const dateOfBirth = document.getElementById("dateOfBirth").value;
-  const gender = document.getElementById("gender").value;
-  const weight = document.getElementById("weight").value;
-  const allergies = document.getElementById("allergies").value;
-  const currentMedication = document.getElementById("currentMedication").value;
-  const providerNotes = document.getElementById("providerNotes").value;
-  const vitals = document.getElementById("vitals").value;
-  const prescriptions = document.getElementById("prescriptions").value;
-  const labResults = document.getElementById("labResults").value;
-  const medicalImages = document.getElementById("medicalImages").value;
-  const medicalHistory = document.getElementById("medicalHistory").value;
-  const documents = document.getElementById("documents").value;
-
-  const patientInfo = {
-    patientName,
-    patientID,
-    dateOfBirth,
-    gender,
-    weight,
-    allergies,
-    currentMedication,
-    providerNotes,
-    vitals,
-    prescriptions,
-    labResults,
-    medicalImages,
-    medicalHistory,
-    documents,
-  };
-
-  localStorage.setItem("patientInfo", JSON.stringify(patientInfo));
+    const patientName = document.getElementById("patientName").value;
+    const patientID = document.getElementById("patientID").value;
+    const dateOfBirth = document.getElementById("dateOfBirth").value;
+    const gender = document.getElementById("gender").value;
+    const allergies = document.getElementById("allergies").value;
+    const currentMedication = document.getElementById("currentMedication").value;
+    const providerNotes = document.getElementById("providerNotes").value;
+    const vitals = document.getElementById("vitals").value;
+    const prescriptions = document.getElementById("prescriptions").value;
+    const labResults = document.getElementById("labResults").value;
+    const medicalImages = document.getElementById("medicalImages").value;
+    const medicalHistory = document.getElementById("medicalHistory").value;
+    const documents = document.getElementById("documents").value;
+  
+    const patientInfo = {
+      patientName,
+      patientID,
+      dateOfBirth,
+      gender,
+      allergies,
+      currentMedication,
+      providerNotes,
+      vitals,
+      prescriptions,
+      labResults,
+      medicalImages,
+      medicalHistory,
+      documents,
+    };
+  
+    localStorage.setItem("patientInfo", JSON.stringify(patientInfo));
 }
 
 function loadPatientInfo() {
-  const patientInfo = JSON.parse(localStorage.getItem("patientInfo"));
-  if (patientInfo) {
-    document.getElementById("patientName").value = patientInfo.patientName;
-    document.getElementById("patientID").value = patientInfo.patientID;
-    document.getElementById("dateOfBirth").value = patientInfo.dateOfBirth;
-    document.getElementById("gender").value = patientInfo.gender;
-    document.getElementById("weight").value = patientInfo.weight;
-    document.getElementById("allergies").value = patientInfo.allergies;
-    document.getElementById("currentMedication").value =
-      patientInfo.currentMedication;
-    document.getElementById("providerNotes").value = patientInfo.providerNotes;
-    document.getElementById("vitals").value = patientInfo.vitals;
-    document.getElementById("prescriptions").value = patientInfo.prescriptions;
-    document.getElementById("labResults").value = patientInfo.labResults;
-    document.getElementById("medicalImages").value = patientInfo.medicalImages;
-    document.getElementById("medicalHistory").value =
-      patientInfo.medicalHistory;
-    document.getElementById("documents").value = patientInfo.documents;
-  }
+    const patientInfo = JSON.parse(localStorage.getItem("patientInfo"));
+    if (patientInfo) {
+      document.getElementById("patientName").value = patientInfo.patientName;
+      document.getElementById("patientID").value = patientInfo.patientID;
+      document.getElementById("dateOfBirth").value = patientInfo.dateOfBirth;
+      document.getElementById("gender").value = patientInfo.gender;
+      document.getElementById("allergies").value = patientInfo.allergies;
+      document.getElementById("currentMedication").value = patientInfo.currentMedication;
+      document.getElementById("providerNotes").value = patientInfo.providerNotes;
+      document.getElementById("vitals").value = patientInfo.vitals;
+      document.getElementById("prescriptions").value = patientInfo.prescriptions;
+      document.getElementById("labResults").value = patientInfo.labResults;
+      document.getElementById("medicalImages").value = patientInfo.medicalImages;
+      document.getElementById("medicalHistory").value = patientInfo.medicalHistory;
+      document.getElementById("documents").value = patientInfo.documents;
+    }
 }
 
-// Restore sidebar selection, theme mode, and provider name on page load
+// Restore sidebar selection, theme mode, provider name, and patient info on page load
 window.addEventListener("load", () => {
-  const lastPage = localStorage.getItem("lastPage");
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "light") {
-    document.body.classList.remove("dark-mode"); // Remove dark mode for light mode
-  } else {
-    document.body.classList.add("dark-mode"); // Default to dark mode
-  }
-
-  if (lastPage) {
-    showPage(lastPage); // Restore the selected page
-  } else {
-    showPage("weight-dose"); // Default to 'Weight & Dose'
-  }
-
-  loadProviderName(); // Load the saved provider name
-  loadPatientInfo(); // Load the saved patient information
-});
+    const lastPage = localStorage.getItem("lastPage");
+    const savedTheme = localStorage.getItem("theme");
+  
+    if (savedTheme === "light") {
+      document.body.classList.remove("dark-mode"); // Remove dark mode for light mode
+    } else {
+      document.body.classList.add("dark-mode"); // Default to dark mode
+    }
+  
+    if (lastPage) {
+      showPage(lastPage); // Restore the selected page
+    } else {
+      showPage("weight-dose"); // Default to 'Weight & Dose'
+    }
+  
+    loadProviderName(); // Load the saved provider name
+    loadPatientInfo(); // Load the saved patient information
+  });
