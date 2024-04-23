@@ -145,7 +145,7 @@ hr {
 .graph-container {
     background-color: var(--graph-container-color);
     border-radius: 30px;
-    height: 700px;
+    height: 705px;
 }
 
 .tab {
