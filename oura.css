@@ -37,7 +37,7 @@ html {
   color: var(--text-color);
   height: auto;
   margin: 0;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
 }
 
 h1 {
@@ -251,7 +251,7 @@ hr {
   font-size: 18px;
   outline: none;
   width: 100%;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   font-weight: 200;
 }
 
@@ -283,157 +283,103 @@ hr {
 /* PATIENT OVERVIEW SECTION */
 
 .patient-overview {
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .patient-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    background-color: var(--content-area-color);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .info-group {
-    flex-basis: calc(33.33% - 20px);
-  }
-  
-  .info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .info-item label {
-    flex-basis: 120px;
-    margin-right: 10px;
-  }
-  
-  .info-item input {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
-    background-color: var(--main-content-color);
-    color: var(--text-color);
-  }
-  
-  .patient-details {
-    display: flex;
-    justify-content: space-between;
-    flex-grow: 1;
-  }
-  
-  .details-left {
-    flex-basis: calc(40% - 20px);
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .details-left h3 {
-    margin-bottom: 10px;
-  }
-  
-  .details-left textarea {
-    width: 100%;
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
-    color: var(--text-color);
-    resize: none;
-  }
-  
-  .details-right {
-    flex-basis: calc(50% - 20px);
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .detail-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  h3 {
-    font-weight: 300;
-  }
-  
-  .detail-item h3 {
-    flex-basis: 150px;
-    margin-right: 10px;
-  }
-  
-  .detail-item textarea {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
-    background-color: var(--main-content-color);
-    color: var(--text-color);
-    resize: vertical;
-  }
-  
-  .save-button-container {
-    margin-top: 20px;
-    padding-right: 20px;
-    align-self: flex-end;
-  }
-  
-  .save-button-wrapper {
-    display: inline-block;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  #saveButton {
-    padding: 10px 20px;
-    background-color: var(--selected-tab-color);
-    color: var(--text-color);
-    border: none;
-    cursor: pointer;
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    font-optical-sizing: auto;
-    transition: background-color 0.3s;
-  }
-  
-  #saveButton:hover {
-    background-color: var(--selected-color);
-  }
-  
-  .info-item input,
-  .details-left textarea,
-  .detail-item textarea {
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    font-optical-sizing: auto;
-  }
-  
-  .info-item input::placeholder,
-  .details-left textarea::placeholder,
-  .detail-item textarea::placeholder {
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    font-optical-sizing: auto;
-    color: var(--text-color);
-    opacity: 0.7;
-  }
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.patient-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--content-area-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info-group {
+  flex-basis: calc(33.33% - 20px);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-item label {
+  flex-basis: 120px;
+  margin-right: 10px;
+}
+
+.info-item input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  background-color: var(--main-content-color);
+  color: var(--text-color);
+}
+
+.patient-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-left {
+  flex-basis: calc(40% - 20px);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.details-left h3 {
+  margin-bottom: 10px;
+}
+
+.details-left textarea {
+  width: 100%;
+  height: 390px;
+  padding: 8px;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  resize: none;
+}
+
+.details-right {
+  flex-basis: calc(50% - 20px);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+.detail-item h3 {
+  flex-basis: 150px;
+  margin-right: 10px;
+}
+
+.detail-item textarea {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  background-color: var(--main-content-color);
+  color: var(--text-color);
+  resize: vertical;
+}
+
+::placeholder {
+  font-family: Helvetica, sans-serif;
+}
 
 @media screen and (min-width: 768px) {
   .info-group {
@@ -474,4 +420,3 @@ hr {
     opacity: 1;
   }
 }
-
