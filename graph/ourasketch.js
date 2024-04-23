@@ -39,7 +39,11 @@ document.getElementById("upload-button").addEventListener("click", (e) => {
     let fileData = event.target.result;
 
     // Read the Excel workbook
-    let workbook = XLSX.read(fileData, { type: "binary" }, { dateNF: "mm/dd/yyyy" });
+    let workbook = XLSX.read(
+      fileData,
+      { type: "binary" },
+      { dateNF: "mm/dd/yyyy" }
+    );
 
     // Change each sheet in the workbook to json
     workbook.SheetNames.forEach(async (sheet) => {
@@ -70,14 +74,26 @@ function sleep(deep, rem, duration) {
   this.rem = rem;
   this.duration = duration;
   this.ellipseSize = map(duration, minDuration, maxDuration, 5, 20); // Map duration to ellipse size
-  this.positionX = map(this.deep, minDeep, maxDeep, marginX, marginX + graphWidth);
-  this.positionY = map(this.rem, minRem, maxRem, marginY + graphHeight, marginY);
+  this.positionX = map(
+    this.deep,
+    minDeep,
+    maxDeep,
+    marginX,
+    marginX + graphWidth
+  );
+  this.positionY = map(
+    this.rem,
+    minRem,
+    maxRem,
+    marginY + graphHeight,
+    marginY
+  );
 
   // Functions
   this.drawEllipse = function () {
     noStroke();
     if (selectedToggle == 0) {
-      fill(255, 0, 0);
+      fill(0, 102, 255);
     } else if (selectedToggle == 1) {
       fill(0, 255, 0);
     } else if (selectedToggle == 2) {
@@ -101,8 +117,16 @@ function sleep(deep, rem, duration) {
       this.ellipseSize / 2
     ) {
       // Calculate the position of the information box
-      let boxX = constrain(this.positionX - 100, marginX, width - marginX - 200);
-      let boxY = constrain(this.positionY - 130, marginY, height - marginY - 120);
+      let boxX = constrain(
+        this.positionX - 100,
+        marginX,
+        width - marginX - 200
+      );
+      let boxY = constrain(
+        this.positionY - 130,
+        marginY,
+        height - marginY - 120
+      );
 
       fill(255);
       stroke(200);
@@ -112,7 +136,13 @@ function sleep(deep, rem, duration) {
       textAlign(LEFT, TOP);
       text("Deep Sleep: " + str(this.deep), boxX + 10, boxY + 10);
       text("REM Sleep: " + str(this.rem), boxX + 10, boxY + 30);
-      text("Sleep Duration: " + str((this.duration / 60 / 60).toFixed(2)) + " hours", boxX + 10, boxY + 50);
+      text(
+        "Sleep Duration: " +
+          str((this.duration / 60 / 60).toFixed(2)) +
+          " hours",
+        boxX + 10,
+        boxY + 50
+      );
     }
   };
 }
@@ -141,9 +171,10 @@ function getMaxValues(data) {
 function setup() {
   // createCanvas() creates the canvas element we will be drawing to.
   var canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id("sleepGraph");
   canvas.parent("sketch");
-  textSize(12);
-  textFont("Helvetica Neue");
+  textSize(14);
+  textFont("DM+Sans");
   console.log("Setup complete...");
 }
 
@@ -175,10 +206,10 @@ function drawToggles() {
 }
 
 function draw() {
-  background(255);
-  drawToggles();
+  background(27, 27, 27);
+  // drawToggles();
   // Draw minor axis lines
-  stroke(230);
+  stroke(122, 122, 122);
   for (var i = 0; i < 9; i++) {
     line(
       marginX,
@@ -197,13 +228,13 @@ function draw() {
   }
 
   // Draw major axis lines
-  stroke(0);
+  stroke(255);
   line(marginX, height - marginY, width - marginX, height - marginY);
   line(marginX, marginY, marginX, height - marginY);
 
   // Draw axis labels
   noStroke();
-  fill(0);
+  fill(255);
   textAlign(CENTER, TOP);
   text("REM Sleep", width / 2, height - marginY + 30);
   textAlign(RIGHT, CENTER);
@@ -216,8 +247,8 @@ function draw() {
   // Draw
   // Draw title
   textAlign(CENTER, CENTER);
-  textSize(20);
-  text("Sleep Data Visualization", width / 2, marginY / 2);
+  textSize(30);
+  text("SLEEP DATA VISUALIZATION", width / 2, marginY / 2);
   textSize(12);
 
   // Draw labels
@@ -276,7 +307,6 @@ function mousePressed() {
     }
   }
 }
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
