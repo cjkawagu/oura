@@ -2,17 +2,17 @@ function toggleTheme() {
     document.body.classList.toggle("dark-mode"); // Toggle between dark and light mode
     const isDarkMode = document.body.classList.contains("dark-mode"); // Check if dark mode is active
     localStorage.setItem("theme", isDarkMode ? "dark" : "light"); // Store the preference in localStorage
-  }
+}
   
-  function highlightTab(tab) {
+function highlightTab(tab) {
     const tabs = document.querySelectorAll(".tab");
     tabs.forEach((tab) => {
       tab.classList.remove("selected");
     });
     tab.classList.add("selected");
-  }
+}
   
-  function showPage(page) {
+function showPage(page) {
     const mainContent = document.querySelector(".main-content");
     mainContent.innerHTML = ""; // Clear previous content
   
@@ -162,21 +162,21 @@ function toggleTheme() {
     if (page === "patient-overview") {
       loadPatientInfo();
     }
-  }
+}
   
-  function saveProviderName() {
+function saveProviderName() {
     const providerName = document.getElementById("providerName").value;
     localStorage.setItem("providerName", providerName);
-  }
+}
   
-  function loadProviderName() {
+function loadProviderName() {
     const providerName = localStorage.getItem("providerName");
     if (providerName) {
       document.getElementById("providerName").value = providerName;
     }
-  }
+}
   
-  function savePatientInfo() {
+function savePatientInfo() {
     const patientName = document.getElementById("patientName").value;
     const patientID = document.getElementById("patientID").value;
     const dateOfBirth = document.getElementById("dateOfBirth").value;
@@ -214,9 +214,9 @@ function toggleTheme() {
   
     // Capture a screenshot of the page
     captureScreenshot();
-  }
+}
   
-  function captureScreenshot() {
+function captureScreenshot() {
     html2canvas(document.body).then(function (canvas) {
       var screenshotURL = canvas.toDataURL("image/png");
       var link = document.createElement("a");
@@ -224,9 +224,9 @@ function toggleTheme() {
       link.download = "patient_overview_screenshot.png";
       link.click();
     });
-  }
+}
   
-  function loadPatientInfo() {
+function loadPatientInfo() {
     const patientInfo = JSON.parse(localStorage.getItem("patientInfo"));
     if (patientInfo) {
       document.getElementById("patientName").value = patientInfo.patientName || "";
@@ -243,10 +243,10 @@ function toggleTheme() {
       document.getElementById("medicalHistory").value = patientInfo.medicalHistory || "";
       document.getElementById("documents").value = patientInfo.documents || "";
     }
-  }
+}
   
-  // Restore sidebar selection, theme mode, provider name, and patient info on page load
-  window.addEventListener("load", () => {
+// Restore sidebar selection, theme mode, provider name, and patient info on page load
+window.addEventListener("load", () => {
     const lastPage = localStorage.getItem("lastPage");
     const savedTheme = localStorage.getItem("theme");
   
@@ -263,4 +263,4 @@ function toggleTheme() {
     }
   
     loadProviderName(); // Load the saved provider name
-  });
+});

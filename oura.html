@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="oura.css" />
-    <script src="sketch.js"></script>
-    <script src="oura.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="oura.css" />
+        <script src="sketch.js"></script>
+        <script src="oura.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   </head>
   <body>
-    <div class="dashboard">
-      <!-- Sidebar -->
-      <nav class="sidebar">
-        <div class="nav-section">
-          <div class="sidebar-item">
-            <h1 class="title">
-              CLINICIAN <br />
-              DASHBOARD
-            </h1>
-          </div>
-          <!-- Sidebar with data-page-link to indicate which page to load -->
-          <div
-            class="sidebar-item"
-            data-page-link="patient-overview"
-            onclick="showPage('patient-overview')"
-          >
-            <div class="icon-circle"></div>
-            <span class="text"
-              >Patient <br />
-              Overview</span
-            >
-          </div>
-          <div
-            class="sidebar-item selected"
-            data-page-link="weight-dose"
-            onclick="showPage('weight-dose')"
-          >
-            <div class="icon-circle"></div>
-            <span class="text">Sleep Quality</span>
-          </div>
-          <div
-            class="sidebar-item"
-            data-page-link="sleep-calories"
-            onclick="showPage('sleep-calories')"
-          >
-            <div class="icon-circle"></div>
-            <span class="text"
-              >Weight & <br />
-              Activity</span
-            >
-          </div>
-        </div>
-
-        <div class="nav-footer">
-          <div class="sidebar-item" id="switch" onclick="toggleTheme()">
-            <div class="icon-circle"></div>
-            <span class="text"
-              >Light/Dark <br />
-              Mode Switch</span
-            >
-          </div>
-
-          <br />
-          <hr />
-          <br />
-          <br />
-
-          <div class="sidebar-item">
-            <div class="icon-circle"></div>
-            <div class="text">
-              <input
-                type="text"
-                id="providerName"
-                placeholder="Provider Name"
-                oninput="saveProviderName()"
-              />
+        <div class="dashboard">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="nav-section">
+            <div class="sidebar-item">
+                <h1 class="title">
+                CLINICIAN <br />
+                DASHBOARD
+                </h1>
             </div>
-          </div>
+            <!-- Sidebar with data-page-link to indicate which page to load -->
+            <div
+                class="sidebar-item"
+                data-page-link="patient-overview"
+                onclick="showPage('patient-overview')"
+            >
+                <div class="icon-circle"></div>
+                <span class="text"
+                >Patient <br />
+                Overview</span
+                >
+            </div>
+            <div
+                class="sidebar-item selected"
+                data-page-link="weight-dose"
+                onclick="showPage('weight-dose')"
+            >
+                <div class="icon-circle"></div>
+                <span class="text">Sleep Quality</span>
+            </div>
+            <div
+                class="sidebar-item"
+                data-page-link="sleep-calories"
+                onclick="showPage('sleep-calories')"
+            >
+                <div class="icon-circle"></div>
+                <span class="text"
+                >Weight & <br />
+                Activity</span
+                >
+            </div>
+            </div>
+
+            <div class="nav-footer">
+            <div class="sidebar-item" id="switch" onclick="toggleTheme()">
+                <div class="icon-circle"></div>
+                <span class="text"
+                >Light/Dark <br />
+                Mode Switch</span
+                >
+            </div>
+
+            <br />
+            <hr />
+            <br />
+            <br />
+
+            <div class="sidebar-item">
+                <div class="icon-circle"></div>
+                <div class="text">
+                <input
+                    type="text"
+                    id="providerName"
+                    placeholder="Provider Name"
+                    oninput="saveProviderName()"
+                />
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Content for the main area will be populated by JavaScript -->
         </div>
-      </nav>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <!-- Content for the main area will be populated by JavaScript -->
-      </div>
-
-      <!-- Settings page content, initially hidden, with toggle button -->
-      <section data-page="settings" style="display: none">
-        <div class="toggle-theme" onclick="toggleTheme()">
-          Toggle Light/Dark Mode
+        <!-- Settings page content, initially hidden, with toggle button -->
+        <section data-page="settings" style="display: none">
+            <div class="toggle-theme" onclick="toggleTheme()">
+            Toggle Light/Dark Mode
+            </div>
+        </section>
         </div>
-      </section>
-    </div>
 
-    <script src="oura.js"></script>
+        <script src="oura.js"></script>
   </body>
 </html>
