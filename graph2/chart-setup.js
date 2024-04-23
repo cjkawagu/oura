@@ -11,17 +11,14 @@ document
       case "calories":
         statusText = "Calories";
         document.getElementById("statusDisplay").style.textAlign = "center";
-        document.getElementById("statusDisplay").style.color = "black";
         break;
       case "inactiveHours":
         statusText = "Inactive Hours";
         document.getElementById("statusDisplay").style.textAlign = "center";
-        document.getElementById("statusDisplay").style.color = "black";
         break;
       case "activeHours":
         statusText = "Active Hours";
         document.getElementById("statusDisplay").style.textAlign = "center";
-        document.getElementById("statusDisplay").style.color = "black";
         break;
       default:
         statusText = "Select a data type...";
