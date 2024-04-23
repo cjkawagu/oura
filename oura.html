@@ -5,78 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="oura.css">
-    <script src = "sketch.js"></script>
-    <script src = "oura.js"></script>
+    <script src="sketch.js"></script>
+    <script src="oura.js"></script>
 </head>
 <body>
     <div class="dashboard">
+        <!-- Sidebar -->
         <nav class="sidebar">
             <div class="nav-section">
-                
-                <br>
-
                 <div class="sidebar-item">
+                    <h1 class="title">OURA <br> Dashboard</h1>
+                </div>
+                <!-- Sidebar with data-page-link to indicate which page to load -->
+                <div class="sidebar-item" data-page-link="patient-overview" onclick="showPage('patient-overview')">
                     <div class="icon-circle"></div>
                     <span class="text">Patient <br> Overview</span>
                 </div>
-                <div class="sidebar-item selected">
+                <div class="sidebar-item selected" data-page-link="weight-dose" onclick="showPage('weight-dose')">
                     <div class="icon-circle"></div>
-                    <span class="text">Dashboard</span>
+                    <span class="text">Weight & <br> Dose</span>
                 </div>
-
+                <div class="sidebar-item" data-page-link="sleep-calories" onclick="showPage('sleep-calories')">
+                    <div class="icon-circle"></div>
+                    <span class="text">Sleep & <br> Calories</span>
+                </div>
             </div>
+            
             <div class="nav-footer">
-                <div class="sidebar-item">
+                <div class="sidebar-item" id="switch" onclick="toggleTheme()">
                     <div class="icon-circle"></div>
-                    <span class="text">Settings</span>
+                    <span class="text">Light/Dark <br> Mode Switch</span>
                 </div>
-                
-                <br>
 
+                <br>
                 <hr>
-
                 <br>
                 <br>
-
+                
                 <div class="sidebar-item">
                     <div class="icon-circle"></div>
-                    <span class="text">Provider<br>Name</span>   
+                    <div class="text">
+                        <input type="text" id="providerName" placeholder="Provider Name" oninput="saveProviderName()">
+                    </div>
                 </div>
-
-                <br>
-
             </div>
         </nav>
-        <main class="main-content">
-            <header class="content-header">
-                <h1>Weight & Dose</h1>
-            </header>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Content for the main area will be populated by JavaScript -->
+        </div>
 
-            <div class="graph">
-
-                <div class="tab-container">
-                    <button class="tab" onclick="highlightTab(this)">Daily</button>
-                    <button class="tab" onclick="highlightTab(this)">Weekly</button>
-                    <button class="tab" onclick="highlightTab(this)">Monthly</button>
-                    <button class="tab" onclick="highlightTab(this)">Yearly</button>
-                </div>
-    
-                <section class="content-area" id = "graph">
-                </section>
-
-            </div>
-
-            <footer class="content-footer">
-                AI Generated Graph Analysis
-                <br>
-                <br>
-                <div class="AIText">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
-                </div>
-            </footer>
-        </main>
+        <!-- Settings page content, initially hidden, with toggle button -->
+        <section data-page="settings" style="display: none;">
+            <div class="toggle-theme" onclick="toggleTheme()">Toggle Light/Dark Mode</div>
+        </section>
     </div>
+
     <script src="oura.js"></script>
 </body>
 </html>
