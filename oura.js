@@ -59,84 +59,81 @@ function toggleTheme() {
         <h1>&nbsp; ${contentTitle}</h1>
         
         <div class="graph-container patient-overview">
-        <div class="patient-info">
-        <div class="info-group">
-          <div class="info-item">
-            <label for="patientName">Patient Name:</label>
-            <input type="text" id="patientName" placeholder="Enter patient name">
-          </div>
-          <div class="info-item">
-            <label for="patientID">Patient ID:</label>
-            <input type="text" id="patientID" placeholder="Enter patient ID">
-          </div>
-        </div>
-        <div class="info-group">
-          <div class="info-item">
-            <label for="dateOfBirth">Date of Birth:</label>
-            <input type="date" id="dateOfBirth">
-          </div>
-          <div class="info-item">
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" placeholder="Enter gender">
-          </div>
-        </div>
-        <div class="info-group">
-          <div class="info-item">
-            <label for="allergies">Allergies:</label>
-            <input type="text" id="allergies" placeholder="Enter allergies">
-          </div>
-          <div class="info-item">
-            <label for="currentMedication">Current Medication:</label>
-            <input type="text" id="currentMedication" placeholder="Enter medication">
-          </div>
-        </div>
-      </div>
-      
-      <div class="patient-details">
-        <div class="details-left">
-          <h3>Provider Notes</h3>
-          <textarea id="providerNotes" placeholder="Enter provider notes"></textarea>
-        </div>
-      
-        <div class="details-right">
-          <br> <br> <br>
-      
-          <div class="detail-item">
-            <h3>Vitals</h3>
-            <textarea id="vitals" placeholder="Enter vitals"></textarea>
-          </div>
-      
-          <div class="detail-item">
-            <h3>Prescriptions</h3>
-            <textarea id="prescriptions" placeholder="Enter prescriptions"></textarea>
-          </div>
-      
-          <div class="detail-item">
-            <h3>Lab Results</h3>
-            <textarea id="labResults" placeholder="Enter lab results"></textarea>
-          </div>
-      
-          <div class="detail-item">
-            <h3>Medical Images</h3>
-            <textarea id="medicalImages" placeholder="Enter medical images"></textarea>
-          </div>
-      
-          <div class="detail-item">
-            <h3>Medical History</h3>
-            <textarea id="medicalHistory" placeholder="Enter medical history"></textarea>
-          </div>
-      
-          <div class="detail-item">
-            <h3>Documents</h3>
-            <textarea id="documents" placeholder="Enter documents"></textarea>
+          <div class="patient-info">
+            <div class="info-group">
+              <div class="info-item">
+                <label for="patientName">Patient Name:</label>
+                <input type="text" id="patientName" placeholder="Enter patient name">
+              </div>
+              <div class="info-item">
+                <label for="patientID">Patient ID:</label>
+                <input type="text" id="patientID" placeholder="Enter patient ID">
+              </div>
+            </div>
+            <div class="info-group">
+              <div class="info-item">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth">
+              </div>
+              <div class="info-item">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" placeholder="Enter gender">
+              </div>
+            </div>
+            <div class="info-group">
+              <div class="info-item">
+                <label for="allergies">Allergies:</label>
+                <input type="text" id="allergies" placeholder="Enter allergies">
+              </div>
+              <div class="info-item">
+                <label for="currentMedication">Current Medication:</label>
+                <input type="text" id="currentMedication" placeholder="Enter medication">
+              </div>
+            </div>
           </div>
           
-        </div>
-
-        
-      </div>
-
-      <div class="save-button-container">
+          <div class="patient-details">
+            <div class="details-left">
+              <h3>Provider Notes</h3>
+              <textarea id="providerNotes" placeholder="Enter provider notes"></textarea>
+            </div>
+          
+            <div class="details-right">
+              <br> <br> <br>
+          
+              <div class="detail-item">
+                <h3>Vitals</h3>
+                <textarea id="vitals" placeholder="Enter vitals"></textarea>
+              </div>
+          
+              <div class="detail-item">
+                <h3>Prescriptions</h3>
+                <textarea id="prescriptions" placeholder="Enter prescriptions"></textarea>
+              </div>
+          
+              <div class="detail-item">
+                <h3>Lab Results</h3>
+                <textarea id="labResults" placeholder="Enter lab results"></textarea>
+              </div>
+          
+              <div class="detail-item">
+                <h3>Medical Images</h3>
+                <textarea id="medicalImages" placeholder="Enter medical images"></textarea>
+              </div>
+          
+              <div class="detail-item">
+                <h3>Medical History</h3>
+                <textarea id="medicalHistory" placeholder="Enter medical history"></textarea>
+              </div>
+          
+              <div class="detail-item">
+                <h3>Documents</h3>
+                <textarea id="documents" placeholder="Enter documents"></textarea>
+              </div>
+            </div>
+          </div>
+          
+          <div class="save-button-container">
             <div class="save-button-wrapper">
               <button id="saveButton" onclick="savePatientInfo()">Save</button>
             </div>
@@ -160,6 +157,11 @@ function toggleTheme() {
     document.querySelector(`[data-page-link="${page}"]`).classList.add("selected"); // Highlight selected item
   
     localStorage.setItem("lastPage", page); // Persist the selected page
+  
+    // Load the saved patient information when navigating to the patient overview page
+    if (page === "patient-overview") {
+      loadPatientInfo();
+    }
   }
   
   function saveProviderName() {
@@ -227,19 +229,19 @@ function toggleTheme() {
   function loadPatientInfo() {
     const patientInfo = JSON.parse(localStorage.getItem("patientInfo"));
     if (patientInfo) {
-      document.getElementById("patientName").value = patientInfo.patientName;
-      document.getElementById("patientID").value = patientInfo.patientID;
-      document.getElementById("dateOfBirth").value = patientInfo.dateOfBirth;
-      document.getElementById("gender").value = patientInfo.gender;
-      document.getElementById("allergies").value = patientInfo.allergies;
-      document.getElementById("currentMedication").value = patientInfo.currentMedication;
-      document.getElementById("providerNotes").value = patientInfo.providerNotes;
-      document.getElementById("vitals").value = patientInfo.vitals;
-      document.getElementById("prescriptions").value = patientInfo.prescriptions;
-      document.getElementById("labResults").value = patientInfo.labResults;
-      document.getElementById("medicalImages").value = patientInfo.medicalImages;
-      document.getElementById("medicalHistory").value = patientInfo.medicalHistory;
-      document.getElementById("documents").value = patientInfo.documents;
+      document.getElementById("patientName").value = patientInfo.patientName || "";
+      document.getElementById("patientID").value = patientInfo.patientID || "";
+      document.getElementById("dateOfBirth").value = patientInfo.dateOfBirth || "";
+      document.getElementById("gender").value = patientInfo.gender || "";
+      document.getElementById("allergies").value = patientInfo.allergies || "";
+      document.getElementById("currentMedication").value = patientInfo.currentMedication || "";
+      document.getElementById("providerNotes").value = patientInfo.providerNotes || "";
+      document.getElementById("vitals").value = patientInfo.vitals || "";
+      document.getElementById("prescriptions").value = patientInfo.prescriptions || "";
+      document.getElementById("labResults").value = patientInfo.labResults || "";
+      document.getElementById("medicalImages").value = patientInfo.medicalImages || "";
+      document.getElementById("medicalHistory").value = patientInfo.medicalHistory || "";
+      document.getElementById("documents").value = patientInfo.documents || "";
     }
   }
   
@@ -261,5 +263,4 @@ function toggleTheme() {
     }
   
     loadProviderName(); // Load the saved provider name
-    loadPatientInfo(); // Load the saved patient information
   });
