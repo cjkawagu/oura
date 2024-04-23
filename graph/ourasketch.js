@@ -288,6 +288,7 @@ function drawToggles() {
 }
 
 function draw() {
+  background(27, 27, 27);
   // drawToggles();
   // Draw minor axis lines
   stroke(122, 122, 122);

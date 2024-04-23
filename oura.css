@@ -33,7 +33,7 @@ body,
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  height: 100%;
+  height: auto;
   margin: 0;
   font-family: "Helvetica", sans-serif;
 }
