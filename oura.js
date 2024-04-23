@@ -20,7 +20,7 @@ function showPage(page) {
   let contentHTML = "";
 
   if (page === "weight-dose") {
-    contentTitle = "Weight & Dose";
+    contentTitle = "Sleep Quality";
     contentHTML = `
           <h1>&nbsp; ${contentTitle}</h1>
           <div class="graph-container">
