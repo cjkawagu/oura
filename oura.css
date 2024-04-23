@@ -103,6 +103,10 @@ hr {
     font-size: 18px;
 }
 
+.title {
+    font-size: 22px;
+}
+
 .email {
     font-size: 14px;
     color: #aaa;
@@ -140,7 +144,8 @@ hr {
 
 .graph-container {
     background-color: var(--graph-container-color);
-    border-radius: 15px;
+    border-radius: 30px;
+    height: 700px;
 }
 
 .tab {
@@ -156,8 +161,10 @@ hr {
 }
 
 .content-area {
-    background-color: var(--content-area-color);
-    padding: 20px;
+    background-color: none;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -231,4 +238,20 @@ hr {
 #providerName::placeholder {
     color: var(--text-color);
     opacity: 0.7;
+}
+
+.ouraGraph1 {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 30px;
+    background-color: none;
+}
+
+.ouraGraph2 {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 30px;
+    background-color: none;
 }

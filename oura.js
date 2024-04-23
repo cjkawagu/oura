@@ -15,27 +15,27 @@ function highlightTab(tab) {
 function showPage(page) {
     const mainContent = document.querySelector('.main-content');
     mainContent.innerHTML = ''; // Clear previous content
-
+  
     let contentTitle = '';
     let contentHTML = '';
-
+  
     if (page === 'weight-dose') {
         contentTitle = 'Weight & Dose';
         contentHTML = `
-            <h1>&nbsp; ${contentTitle}</h1>
-            <div class="graph-container">
-                <br>
-                <div class="tab-container">
-                    <button class="tab" onclick="highlightTab(this)">Daily</button>
-                    <button class="tab" onclick="highlightTab(this)">Weekly</button>
-                    <button class="tab" onclick="highlightTab(this)">Monthly</button>
-                    <button class="tab" onclick="highlightTab(this)">Yearly</button>
-                </div>
-                <section class="content-area" id="graph"></section>
-                <br>
-                <br>
+          <h1>&nbsp; ${contentTitle}</h1>
+          <div class="graph-container">
+            <br>
+            <div class="tab-container">
+              <button class="tab" onclick="highlightTab(this)">Daily</button>
+              <button class="tab" onclick="highlightTab(this)">Weekly</button>
+              <button class="tab" onclick="highlightTab(this)">Monthly</button>
+              <button class="tab" onclick="highlightTab(this)">Yearly</button>
             </div>
-        `;
+            <div class="content-area" id="graph">
+                <iframe src="graph/ouragraph.html" class="ouraGraph1"></iframe> 
+            </div>
+          </div>
+        `; // OKAY BASICALLY JUST CHANGE THE URL OF THE GRAPH AND IT SHOULD BE ABLE TO POPULATE IT! THIS ONE IS OURAGRAPH1
     } else if (page === 'sleep-calories') {
         contentTitle = 'Sleep & Calories';
         contentHTML = `
@@ -48,11 +48,11 @@ function showPage(page) {
                     <button class="tab" onclick="highlightTab(this)">Monthly</button>
                     <button class="tab" onclick="highlightTab(this)">Yearly</button>
                 </div>
-                <section class="content-area" id="graph"></section>
-                <br>
-                <br>
+                <div class="content-area" id="graph">
+                    <iframe src="graph/ouragraph.html" class="ouraGraph2"></iframe>
+                </div>
             </div>
-        `;
+        `; // OKAY BASICALLY JUST CHANGE THE URL OF THE GRAPH AND IT SHOULD BE ABLE TO POPULATE IT! THIS ONE IS OURAGRAPH2
     } else if (page === 'patient-overview') {
         contentTitle = 'Patient Overview';
         contentHTML = `
