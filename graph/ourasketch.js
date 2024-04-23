@@ -26,6 +26,28 @@ document.getElementById("myFile").addEventListener("change", (event) => {
   selectedFile = event.target.files[0];
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  var remButton = document.getElementById("toggle-duration");
+  remButton.addEventListener("click", function () {
+    selectedToggle = 0;
+    redraw();
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  var remButton = document.getElementById("toggle-rem");
+  remButton.addEventListener("click", function () {
+    selectedToggle = 1;
+    redraw();
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  var remButton = document.getElementById("toggle-deep");
+  remButton.addEventListener("click", function () {
+    selectedToggle = 2;
+    redraw();
+  });
+});
+
 // Handle upload button click
 document.getElementById("upload-button").addEventListener("click", (e) => {
   e.preventDefault();
@@ -70,6 +92,7 @@ document.getElementById("upload-button").addEventListener("click", (e) => {
 
 function sleep(deep, rem, duration) {
   // Properties
+  this.isHovered = false;
   this.deep = deep;
   this.rem = rem;
   this.duration = duration;
@@ -89,15 +112,71 @@ function sleep(deep, rem, duration) {
     marginY
   );
 
+  this.color;
+
+  // Functions
+  this.color = [
+    { r: 166, g: 0, b: 191 },
+    { r: 145, g: 0, b: 189 },
+    { r: 132, g: 0, b: 197 },
+    { r: 107, g: 2, b: 186 },
+    { r: 78, g: 1, b: 186 },
+  ];
+
+  this.remToggle = function () {
+    let index;
+    // Determine which color to use based on the value of this.rem
+    if (this.rem < 19) {
+      index = 0;
+    } else if (this.rem < 38) {
+      index = 1;
+    } else if (this.rem < 57) {
+      index = 2;
+    } else if (this.rem < 76) {
+      index = 3;
+    } else {
+      index = 4;
+    }
+
+    // Use the colors from the array
+    var color = this.color[index];
+    fill(color.r, color.g, color.b);
+  };
+  this.deepToggle = function () {
+    let index;
+
+    if (this.deep < 19) {
+      index = 0;
+    } else if (this.deep < 38) {
+      index = 1;
+    } else if (this.deep < 57) {
+      index = 2;
+    } else if (this.deep < 76) {
+      index = 3;
+    } else {
+      index = 4;
+    }
+
+    // Use the colors from the array
+    var color = this.color[index];
+    fill(color.r, color.g, color.b);
+  };
+
   // Functions
   this.drawEllipse = function () {
     noStroke();
-    if (selectedToggle == 0) {
-      fill(0, 102, 255);
-    } else if (selectedToggle == 1) {
-      fill(0, 255, 0);
-    } else if (selectedToggle == 2) {
-      fill(0, 0, 255);
+
+    // Change fill based on hover state
+    if (this.isHovered) {
+      fill(200, 60);
+    } else {
+      if (selectedToggle == 0) {
+        fill(255, 0, 0); // Red
+      } else if (selectedToggle == 1) {
+        this.remToggle();
+      } else if (selectedToggle == 2) {
+        this.deepToggle();
+      }
     }
     ellipse(this.positionX, this.positionY, this.ellipseSize, this.ellipseSize);
   };
@@ -116,6 +195,7 @@ function sleep(deep, rem, duration) {
       dist(this.positionX, this.positionY, mouseX, mouseY) <
       this.ellipseSize / 2
     ) {
+      this.isHovered = true;
       // Calculate the position of the information box
       let boxX = constrain(
         this.positionX - 100,
@@ -143,6 +223,8 @@ function sleep(deep, rem, duration) {
         boxX + 10,
         boxY + 50
       );
+    } else {
+      this.isHovered = false; // Set hovered state to false when not hovering
     }
   };
 }
